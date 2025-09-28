@@ -6,7 +6,7 @@ Para instalar esse pacote, baixe como uma dependência pelo link `https://github
 
 ## Exemplos de implementação
 
-Para implementar em SwiftUI, siga esse modelo
+Para implementar em SwiftUI, siga esse modelo 
 
 ```swift
 struct ContentView: View {
