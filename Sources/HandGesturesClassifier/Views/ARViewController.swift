@@ -49,10 +49,8 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
         cameraManager.checkCameraAccess { [weak self] in
             guard let self else { return }
             
-            #warning("Testar se isso realmente funciona e não quebra a aplicação")
-            Task { @MainActor in
-                self.setupARView()
-            }
+            self.setupARView()
+            
         }
         
     }
