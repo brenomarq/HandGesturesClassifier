@@ -1,5 +1,12 @@
 # HandGestures Classifiers
 
+## Objetivo
+
+Esse pacote possui um modelo de ML treinado para detectar se a mão está 
+aberta ou fechada. Além disso, ele contém uma View que pode ser utilizada
+para mostrar a câmera em tempo real e verificar qual gesto de mão
+foi capturado.
+
 ## Instalação
 
 Para instalar esse pacote com o SPM, baixe como uma dependência pelo link `https://github.com/brenomarq/HandGesturesClassifier`.
