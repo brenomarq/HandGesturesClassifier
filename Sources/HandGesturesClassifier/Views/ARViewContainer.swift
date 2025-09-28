@@ -38,8 +38,10 @@ public struct ARViewContainer: UIViewControllerRepresentable {
     public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         let viewController = uiViewController as? ARViewController
         
-        viewController?.arView.isHidden = isCameraHidden
-        viewController?.cameraFrame = cameraFrame
+        if let viewController = viewController {
+            viewController.arView.isHidden = isCameraHidden
+            viewController.cameraFrame = cameraFrame
+        }
     }
     
 }
