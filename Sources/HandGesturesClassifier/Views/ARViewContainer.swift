@@ -10,12 +10,12 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct ARViewContainer: UIViewControllerRepresentable {
     
-    @Binding var gesture: String
+    @Binding var gesture: HandPoses
     var cameraFrame: CGRect
     @Binding var isCameraHidden: Bool
     
     
-    public init(gesture: Binding<String>, cameraFrame: CGRect, isCameraHidden: Binding<Bool>) {
+    public init(gesture: Binding<HandPoses>, cameraFrame: CGRect, isCameraHidden: Binding<Bool>) {
         self._gesture = gesture
         self.cameraFrame = cameraFrame
         self._isCameraHidden = isCameraHidden

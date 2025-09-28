@@ -18,9 +18,9 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
     private let handPosePredictionInterval = 30
     private let cameraManager = CameraManager()
     
-    public var onGestureUpdate: ((String) -> Void)?
+    public var onGestureUpdate: ((HandPoses) -> Void)?
     
-    public var gesture: String = "" {
+    public var gesture: HandPoses = .background {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
@@ -49,7 +49,10 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
         cameraManager.checkCameraAccess { [weak self] in
             guard let self else { return }
             
-            self.setupARView()
+            #warning("Testar se isso realmente funciona e não quebra a aplicação")
+            Task { @MainActor in
+                self.setupARView()
+            }
         }
         
     }
@@ -68,14 +71,7 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
     private func updateGesture(name: String) {
         let handGesture = HandPoses(rawValue: name) ?? .background
         
-        switch handGesture {
-        case .open:
-            gesture = "aberta"
-        case .closed:
-            gesture = "fechada"
-        case .background:
-            gesture = "background"
-        }
+        gesture = handGesture
     }
     
     
