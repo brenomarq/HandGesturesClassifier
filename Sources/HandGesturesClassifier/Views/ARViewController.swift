@@ -7,6 +7,11 @@
 
 import ARKit
 
+/**
+ Classe responsável por gerenciar a View da câmera.
+ 
+ - Warning: Não implementar essa classe diretamente em uma View do SwiftUI.
+ */
 @available(iOS 14.0, *)
 public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
     
@@ -30,7 +35,13 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
         }
     }
     
-    
+    /**
+     Inicialização da Classe ARViewController.
+     
+     - Parameter cameraFrame: Um CGRect que determina o posicionamento da câmera na tela do aplicativo e o seu tamanho.
+     
+     - Parameter isCameraHidden: Um Bool que determina se a câmera deve ser escondida ou não.
+     */
     public init(cameraFrame: CGRect, isCameraHidden: Bool) {
         self.cameraFrame = cameraFrame
         self.isCameraHidden = isCameraHidden
@@ -48,7 +59,7 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
         
         cameraManager.checkCameraAccess { [weak self] in
             guard let self else { return }
-            
+
             self.setupARView()
             
         }

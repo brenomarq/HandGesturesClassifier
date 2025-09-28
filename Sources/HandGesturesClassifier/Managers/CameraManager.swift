@@ -8,8 +8,26 @@
 import Foundation
 import ARKit
 
+/**
+ Classe responsável por gerenciar assuntos referentes à câmera
+ do dispositivo e seu acesso.
+ */
 public class CameraManager {
     
+    /**
+     Confere se o aplicativo tem permissão para acessar a câmera do dispositivo.
+     
+     - Parameter showView: Executa uma função  caso o acesso à câmera seja garantido.
+     
+     - Examples:
+     ```swift
+     let cameraManager = CameraManager()
+     
+     cameraManager.checkCameraAcess {
+        // Qualquer função void
+     }
+     ```
+     */
     public func checkCameraAccess(showView: @Sendable @escaping () -> Void) {
         switch (AVCaptureDevice.authorizationStatus(for: .video)) {
             
