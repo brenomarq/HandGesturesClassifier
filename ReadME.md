@@ -2,7 +2,7 @@
 
 ## Instalação
 
-Para instalar esse pacote, baixe como uma dependência pelo link ``.
+Para instalar esse pacote, baixe como uma dependência pelo link `https://github.com/brenomarq/HandGesturesClassifier`.
 
 ## Exemplos de implementação
 
