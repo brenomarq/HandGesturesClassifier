@@ -14,17 +14,33 @@ import ARKit
  */
 @available(iOS 14.0, *)
 public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
-    
+    /**
+     De preferência, não mexa nisso!!!!!!!!!!
+     */
     public var arView: ARSCNView!
+    
+    /**
+     Um CGRect que determina o posicionamento da câmera na tela do aplicativo e o seu tamanho.
+     */
     public var cameraFrame: CGRect
+    
+    /**
+     Um Bool que determina se a câmera deve ser escondida ou não.
+     */
     public var isCameraHidden: Bool
     
     private var frameCounter = 0
     private let handPosePredictionInterval = 30
     private let cameraManager = CameraManager()
     
+    /**
+     Essa função é utilizada no Container para atualizar a variável gesture. Não acesse diretamente.
+     */
     public var onGestureUpdate: ((HandPoses) -> Void)?
     
+    /**
+     Variável dinâmica que determina o gesto capturado pelo AR.
+     */
     public var gesture: HandPoses = .background {
         didSet {
             DispatchQueue.main.async { [weak self] in
