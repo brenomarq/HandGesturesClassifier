@@ -11,7 +11,24 @@ foi capturado.
 
 Para instalar esse pacote com o SPM, baixe como uma dependência pelo link `https://github.com/brenomarq/HandGesturesClassifier`.
 
-## Exemplos de implementação
+## Implementação
+
+### 1. Configuração do Xcode
+
+No Target do seu projeto, acesso a sessão `Info` e adicione os seguintes valores:
+
+`
+Required device capabilities: Array
+    Item 0: String: ARKIT
+`
+
+`
+Privacy - Camera Usage Description: String: Sua mensagem de acesso à câmera
+`
+
+Sem essas configurações, o código do pacote não será executado de maneira correta.
+
+### 2. Código
 
 Para implementar a View em SwiftUI, siga esse exemplo:
 
