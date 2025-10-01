@@ -116,7 +116,13 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
             assertionFailure("Human Pose Request failed: \(error.localizedDescription)")
         }
         
-        guard let handPoses = handPoseRequest.results, !handPoses.isEmpty else {
+        guard let handPoses = handPoseRequest.results else {
+            gesture = .background
+            return
+        }
+        
+        if handPoses.isEmpty {
+            gesture = .background
             return
         }
         
