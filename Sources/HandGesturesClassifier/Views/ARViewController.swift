@@ -32,7 +32,8 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
     private var frameCounter = 0
     private let handPosePredictionInterval = 30
     private let cameraManager = CameraManager()
-    
+    var framesWithoutHand = 0
+    let maxFramesWithoutHand = 5
     /**
      Essa função é utilizada no Container para atualizar a variável gesture. Não acesse diretamente.
      */
@@ -117,13 +118,21 @@ public class ARViewController: UIViewController, @MainActor ARSessionDelegate {
         }
         
         guard let handPoses = handPoseRequest.results else {
-            gesture = .background
+            framesWithoutHand += 1
+            if framesWithoutHand >= maxFramesWithoutHand {
+                gesture = .background
+            }
             return
         }
         
         if handPoses.isEmpty {
-            gesture = .background
+            framesWithoutHand += 1
+            if framesWithoutHand >= maxFramesWithoutHand {
+                gesture = .background
+            }
             return
+        } else {
+            framesWithoutHand = 0  // mão detectada
         }
         
         let handObservations = handPoses.first
